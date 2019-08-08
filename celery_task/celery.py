@@ -36,3 +36,4 @@ app=Celery('test',broker=broker,backend=backend,
 # }
 # ceshi
 # yun gai de 
+# yungaide 2
