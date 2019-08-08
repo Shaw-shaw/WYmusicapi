@@ -37,3 +37,4 @@ app=Celery('test',broker=broker,backend=backend,
 # ceshi
 # yun gai de 
 # yungaide 2
+# 云端测试3
