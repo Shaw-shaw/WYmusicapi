@@ -34,3 +34,4 @@ app=Celery('test',broker=broker,backend=backend,
     #     'args': (16, 16)
     # },
 # }
+# ceshi
