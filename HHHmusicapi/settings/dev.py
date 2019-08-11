@@ -26,9 +26,9 @@ sys.path.append(os.path.join(BASE_DIR, 'apps'))
 SECRET_KEY = 'd^yfqf2fsfgjkt4w$kb3)-b@)*%ia*e27#sfuj(j9s*2$!@ndw'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['47.103.37.166', '127.0.0.1']
 
 
 # Application definition
@@ -76,7 +76,7 @@ MIDDLEWARE = [
 CORS_ORIGIN_ALLOW_ALL = False
 # 配置指定跨域域名
 CORS_ORIGIN_WHITELIST = [
-	'http://localhost:8081'
+	'47.103.37.166'
 ]
 
 ROOT_URLCONF = 'HHHmusicapi.urls'
@@ -109,9 +109,9 @@ DATABASES = {
         "ENGINE": "django.db.backends.mysql",
         "HOST": "127.0.0.1",
         "PORT": 3306,
-        "USER": "hhh",
-        "PASSWORD": "hhh",
-        "NAME": "hhhmusic",
+        "USER": "root",
+        "PASSWORD": "Mwz1234.",
+        "NAME": "hhh",
     }
 }
 # DATABASES = {
