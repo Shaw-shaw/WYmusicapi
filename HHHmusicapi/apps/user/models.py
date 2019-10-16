@@ -18,13 +18,13 @@ class User(AbstractUser):
         query_fan = self.fan.all()
         return [fan.id for fan in query_fan]
 
-    def addmenu(self):
-        query_menu = self.songmenus.all()
-        return query_menu
-
-    def createdmenu(self):
-        query_createdmenu = self.mysongmenus.all()
-        return query_createdmenu
+    # def addmenu(self):
+    #     query_menu = self.songmenus.all()
+    #     return query_menu
+    #
+    # def createdmenu(self):
+    #     query_createdmenu = self.mysongmenus.all()
+    #     return query_createdmenu
 
     def my_singers(self):
         my_artist = self.userfollow.all().filter(is_artist=True)

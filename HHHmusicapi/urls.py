@@ -27,5 +27,6 @@ urlpatterns = [
     path('xadmin/', xadmin.site.urls),
     path('user/', include('user.urls')),
     path('song/', include('song.urls')),
-    path(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    path(r'api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    # url(r'^api-auth/', include('rest_framework.urls'))
 ]

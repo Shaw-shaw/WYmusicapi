@@ -1,9 +1,18 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
+from rest_framework.request import Request
 from HHHmusicapi.settings import constant
 from HHHmusicapi.libs.yuntongxun import send_sms
-from . import models
 
+from rest_framework.generics import GenericAPIView
+
+
+
+
+from . import models
+from rest_framework_jwt.utils import jwt_payload_handler
+from rest_framework_jwt.utils import jwt_encode_handler
+from rest_framework_jwt.utils import jwt_response_payload_handler
 import re
 # from HHHmusicapi.utils.smtp import QqEmail
 # Create your views here.

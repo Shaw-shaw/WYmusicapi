@@ -3,7 +3,6 @@ def jwt_response_payload_handler(token, user=None, request=None):
     print()
     return {
         'token': token,
-
         'user': user.username
     }
     # restful 规范
@@ -23,6 +22,10 @@ import re
 class JWTModelBackend(ModelBackend):
     def authenticate(self, request, username=None, password=None, **kwargs):
         """
+        通过继承
+        django.contrib.auth.backends下的ModelBackend
+        根据广度优先原则在该类中重写authenticate方法达到多方式返回user
+        实现多方式登录
         :param request:
         :param username: 前台传入的用户名
         :param password: 前台传入的密码

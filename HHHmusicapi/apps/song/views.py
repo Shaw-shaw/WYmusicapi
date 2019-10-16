@@ -1,6 +1,18 @@
 from rest_framework.generics import ListAPIView
 from rest_framework.generics import DestroyAPIView
 from rest_framework.views import APIView
+# viewsets
+from rest_framework.viewsets import ModelViewSet
+
+from rest_framework.request import Request
+from rest_framework.response import Response
+
+
+
+
+
+
+from rest_framework.permissions import BasePermission
 
 # Create your views here.
 from .serializers import SongMenuModelSerializer
@@ -26,6 +38,7 @@ from rest_framework.filters import OrderingFilter,SearchFilter
 from .utils import PlayListPageNumberPagination
 from user.authentications import JSONWebTokenAuthentication
 from rest_framework.generics import GenericAPIView
+
 from rest_framework import mixins
 from HHHmusicapi.settings import constant
 
@@ -72,7 +85,8 @@ class PlaylistListAPIView(MyBaseMethod,mixins.ListModelMixin,BaseMethod):
     # 搜索
     # http://example.com/api/song/playlist/?search=于   => 止于唇齿 掩于岁月
     # http://example.com/api/song/playlist/?search=古典   => 止于唇齿
-    search_fields = ['name', 'tags__name']
+    # search_fields = ['name', '=tags__name']
+    search_fields = ['@']
     # 排序
     # ordering_fields = ['id', 'students', 'price']
     # http://example.com/api/song/playlist/?ordering=colnum
@@ -179,33 +193,24 @@ class ArtistAlbumListAPIView(ListAPIView):
 class aa(ListAPIView):
     pass
 # 专辑list
-class AlbumlistListAPIView(MyBaseMethod,mixins.ListModelMixin,BaseMethod):
+Stock=12
+StockListPageNumberPagination=22
 
-    """
-    主页请求的话返回固定数目的个单数
-    通过重写GenericAPIView下的get_queryset方法实现返回不同的queryset
-    """
+
+class StockListAPIView(MyBaseMethod, mixins.ListModelMixin, BaseMethod):
+
     def get(self, request, *args, **kwargs):
         return self.list(request, *args, **kwargs)
-    # 初步过滤
+
     def get_queryset(self):
-        queryset = super().get_home_queryset(self.request,'-create_time',Album,constant.ALBUM_LIMIT_COUNT)
+        queryset = super().get_home_queryset(self.request, '-create_time', Stock, constant.STOCK_LIMIT_COUNT)
         return queryset
 
     serializer_class = AlbumListModelSerializer
     filter_backends = [DjangoFilterBackend, OrderingFilter, SearchFilter]
-    # django-filters过滤
-    # filter_fields = ['tags', ]
-    # 搜索
-    # http://example.com/api/song/playlist/?search=于   => 止于唇齿 掩于岁月
-    # http://example.com/api/song/playlist/?search=古典   => 止于唇齿
-    search_fields = ['name', 'singer__category__name']
-    # 排序
-    # ordering_fields = ['id', 'students', 'price']
-    # http://example.com/api/song/playlist/?ordering=colnum
+    search_fields = ['symbol', 'symbol_category']
     ordering_fields = ['create_time']
-    # 分页
-    pagination_class = PlayListPageNumberPagination
+    pagination_class = StockListPageNumberPagination
 
 
 # 我的音乐页

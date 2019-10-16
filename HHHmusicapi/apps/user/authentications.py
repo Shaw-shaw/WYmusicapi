@@ -25,6 +25,7 @@ class JSONWebTokenAuthentication(BaseJSONWebTokenAuthentication):
 
 # 短信频率认证
 from rest_framework.throttling import SimpleRateThrottle
+from rest_framework.permissions import BasePermission
 class SMSRateThrottle(SimpleRateThrottle):
     scope = 'sms'
     def get_cache_key(self, request, view):
